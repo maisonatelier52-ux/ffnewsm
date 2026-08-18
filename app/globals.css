@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #ffffff;
+    --text-primary: #000000;
+    --text-muted: #52525b;
+  }
+
+  * {
+    border-radius: 0px !important;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif-headline {
+    font-family: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.015em;
+    line-height: 1.08 !important;
+  }
+
+  p {
+    line-height: 1.35 !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}

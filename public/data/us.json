@@ -1,0 +1,84 @@
+[
+  {
+    "id": "us-1",
+    "slug": "world-athletics-championships-breakthrough",
+    "title": "Decathlon World Record Shattered at World Athletics Championships in Tokyo",
+    "shortdescription": "24-year-old athlete sets historic 9,210 point milestone with dominant performances in pole vault and 1,500 meters.",
+    "category": "us",
+    "date": "August 18, 2026",
+    "author": {
+      "name": "David K. Miller",
+      "role": "Chief Sports Correspondent",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+      "bio": "Veteran sports journalist covering Olympic games, athletics, and sports science.",
+      "email": "d.miller@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
+    "description": [
+      {
+        "subtitle": "A Masterclass in Multi-Discipline Endurance",
+        "text": "Before a packed national stadium crowd of 68,000 spectators, American track prodigy Tyler Vance capped a grueling two-day decathlon by running a blistering 4:08.12 in the 1,500m finale to eclipse the decade-old world record by 84 points."
+      },
+      {
+        "subtitle": "Biomechanics and High-Tech Gear",
+        "text": "Sports physiologists attribute the record-breaking run to customized energy-return footwear and hyper-personalized hydration protocols monitored by real-time subcutaneous lactate meters throughout the competition."
+      },
+      {
+        "subtitle": "Legacy and International Acclaim",
+        "text": "Fellow competitors carried Vance around the track on a victory lap as international athletics officials commended his unprecedented versatility across sprint, throw, and jump disciplines."
+      }
+    ]
+  },
+  {
+    "id": "us-2",
+    "slug": "high-speed-passenger-rail-inauguration",
+    "title": "Pacific Coast High-Speed Bullet Rail Commences Passenger Service",
+    "shortdescription": "220 mph electrified high-speed train connects San Francisco and Los Angeles in under two hours.",
+    "category": "us",
+    "date": "August 17, 2026",
+    "author": {
+      "name": "Sarah Jenkins",
+      "role": "US Infrastructure Reporter",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
+      "bio": "Washington bureau writer focusing on transportation, urban policy, and regional development.",
+      "email": "s.jenkins@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1515165562839-978402924d5e?w=1200",
+    "description": [
+      {
+        "subtitle": "Connecting Metropolitan Economies",
+        "text": "State transit officials cut the ribbon on North America's fastest electrified passenger rail link. The inaugural bullet train departed Transbay Terminal with a full capacity of 450 passengers, reaching sustained speeds of 220 miles per hour across the Central Valley."
+      },
+      {
+        "subtitle": "Environmental and Commuter Impact",
+        "text": "Transportation analysts project the line will eliminate over 3.2 million short-haul airline passenger trips annually, eliminating hundreds of thousands of metric tons of carbon emissions."
+      }
+    ]
+  },
+  {
+    "id": "us-3",
+    "slug": "americas-cup-sailing-hydrofoil-finals",
+    "title": "Next-Gen Foiling Monohulls Reach 55 Knots in Thrilling America's Cup Final",
+    "shortdescription": "Advanced aerodynamic sails and computer-controlled hydrofoils deliver unprecedented racing speeds in coastal waters.",
+    "category": "us",
+    "date": "August 14, 2026",
+    "author": {
+      "name": "David K. Miller",
+      "role": "Chief Sports Correspondent",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+      "bio": "Veteran sports journalist covering Olympic games, athletics, and sports science.",
+      "email": "d.miller@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    "description": [
+      {
+        "subtitle": "Formula 1 on the Sea",
+        "text": "The 38th America's Cup concluded in dramatic fashion as defending champions executed a high-risk gybe at 52 knots, lifting their 75-foot carbon fiber yacht entirely clear of the water to cross the finish line by a mere 3 seconds."
+      },
+      {
+        "subtitle": "Aerospace Hydraulics and Sensor Fusion",
+        "text": "Design syndicates spent over $100 million optimizing telemetry and automated foil flight control, proving that modern competitive sailing has become as much a battle of computational fluid dynamics as nautical seamanship."
+      }
+    ]
+  }
+]

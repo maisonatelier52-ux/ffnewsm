@@ -1,0 +1,84 @@
+[
+  {
+    "id": "ent-1",
+    "slug": "venice-film-festival-holographic-cinema",
+    "title": "Venice Film Festival Awards Golden Lion to Spatial Holographic Masterpiece",
+    "shortdescription": "Director Clara Moreau redefines immersive storytelling with a boundary-breaking narrative blending live theatrical actors and volumetric projections.",
+    "category": "entertainment",
+    "date": "August 18, 2026",
+    "author": {
+      "name": "Camille Laurent",
+      "role": "Arts & Culture Critic",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "bio": "Parisian culture editor covering cinema, digital media installations, and international art bienniales.",
+      "email": "c.laurent@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200",
+    "description": [
+      {
+        "subtitle": "The Dawn of Volumetric Cinema",
+        "text": "At the 83rd Venice International Film Festival, jury members unanimously conferred the prestigious Golden Lion upon 'Echoes of the Solstice', a revolutionary 110-minute feature that dispenses with traditional 2D silver screens in favor of room-scale light-field projection."
+      },
+      {
+        "subtitle": "Audience Interaction and Perspective",
+        "text": "Viewers walking through the tailored soundstage experienced unique visual perspectives depending on their physical position relative to the holographic performers, creating an unprecedented synthesis of theatre, film, and spatial art."
+      },
+      {
+        "subtitle": "Critical Acclaim and Distribution Models",
+        "text": "Major global arts venues and premier boutique cinemas are already retrofitting auditoriums with spatial laser arrays to host the film's upcoming autumn worldwide tour."
+      }
+    ]
+  },
+  {
+    "id": "ent-2",
+    "slug": "archaeological-musical-instrument-reconstruction",
+    "title": "Acoustic Archeologists Acoustic-Synthesize 3,000-Year-Old Bronze Age Instruments",
+    "shortdescription": "3D acoustic resonance scans restore the authentic melodic timbres of ancient Mediterranean rituals for orchestra performance.",
+    "category": "entertainment",
+    "date": "August 15, 2026",
+    "author": {
+      "name": "Camille Laurent",
+      "role": "Arts & Culture Critic",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "bio": "Parisian culture editor covering cinema, digital media installations, and international art bienniales.",
+      "email": "c.laurent@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200",
+    "description": [
+      {
+        "subtitle": "Unlocking Bronze Age Harmonics",
+        "text": "Musicologists and acoustic engineers utilized high-energy X-ray tomography to map internal micro-chambers of tarnished bronze horns excavated in Crete. The resulting physical replicas revealed rich harmonic overtones previously unheard in modern music."
+      },
+      {
+        "subtitle": "World Premiere at the Philharmonie",
+        "text": "The Berlin Philharmonic premiered a commissioned symphony incorporating the restored instruments, transporting audience members into an evocative, primal sonic landscape."
+      }
+    ]
+  },
+  {
+    "id": "ent-3",
+    "slug": "global-streaming-syndication-standards",
+    "title": "Independent Film Collectives Launch Decentralized Distribution Network",
+    "shortdescription": "A consortium of international filmmakers establishes a direct creator-to-viewer streaming protocol with transparent royalty splits.",
+    "category": "entertainment",
+    "date": "August 12, 2026",
+    "author": {
+      "name": "Julian Vance",
+      "role": "Media Industry Analyst",
+      "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150",
+      "bio": "Specialist in streaming economics, copyright law, and independent cinema funding.",
+      "email": "j.vance@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200",
+    "description": [
+      {
+        "subtitle": "Empowering Independent Creators",
+        "text": "Fed up with non-transparent algorithm curation and delayed royalty payouts from mainstream platforms, over 400 independent film producers launched the 'CineNode' cooperative network."
+      },
+      {
+        "subtitle": "Direct Audience Subscriptions",
+        "text": "Subscribers stream 4K master files directly from decentralized peer nodes, with 92% of subscription revenue depositing instantly into filmmakers' verified smart accounts."
+      }
+    ]
+  }
+]

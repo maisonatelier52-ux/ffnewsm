@@ -1,0 +1,84 @@
+[
+  {
+    "id": "bus-1",
+    "slug": "global-central-banks-digital-liquidity",
+    "title": "Central Banks Roll Out Interoperable Digital Liquidity Frameworks",
+    "shortdescription": "Financial authorities in Europe, Japan, and the UK launch real-time cross-border settlement protocols using institutional digital ledger technology.",
+    "category": "business",
+    "date": "August 18, 2026",
+    "author": {
+      "name": "Helena Vance",
+      "role": "Global Markets Analyst",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
+      "bio": "Senior financial editor with 15 years experience covering central bank monetary policies.",
+      "email": "h.vance@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200",
+    "description": [
+      {
+        "subtitle": "Instant Institutional Settlement",
+        "text": "A coalition of central banks representing major currency blocs announced the operational launch of Project Nexus II. The joint initiative allows commercial institutions to execute cross-border foreign exchange clearing in milliseconds, eliminating traditional T+2 counterparty risk."
+      },
+      {
+        "subtitle": "Implications for Global Treasury Operations",
+        "text": "Corporate treasurers around the globe are restructuring cash management operations to leverage round-the-clock liquidity access. Early data indicates corporate borrowing costs for short-term trade finance could drop by up to 35 basis points."
+      },
+      {
+        "subtitle": "Regulatory Safeguards & Sovereignty",
+        "text": "Regulators emphasized that the new digital clearing channels operate under strict capital requirement standards, preserving national sovereign monetary controls while modernizing global trade architecture."
+      }
+    ]
+  },
+  {
+    "id": "bus-2",
+    "slug": "semiconductor-foundry-expansion",
+    "title": "Next-Generation Fabrication Plants Reach Commercial Wafer Yield Targets",
+    "shortdescription": "Advanced 1.4nm silicon nodes achieve commercial viability, driving semiconductor stock rallies across global exchanges.",
+    "category": "business",
+    "date": "August 16, 2026",
+    "author": {
+      "name": "Siddharth Rao",
+      "role": "Tech Industry Reporter",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+      "bio": "Specialist in microelectronics, semiconductor supply chains, and industrial capital expenditure.",
+      "email": "s.rao@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
+    "description": [
+      {
+        "subtitle": "Sub-Nanometer Manufacturing Milestones",
+        "text": "Leading chip foundries reported sustained 85% wafer yields on their cutting-edge 1.4-nanometer extreme ultraviolet lithography lines. The announcement sparked widespread rallies in tech equity indices across Tokyo, Taipei, and New York."
+      },
+      {
+        "subtitle": "CapEx Investment and Supply Resilience",
+        "text": "Over $180 billion in localized fabrication facilities constructed over the past three years are now shifting from pilot calibration to full-scale commercial volume production, alleviating long-standing hardware bottlenecks."
+      }
+    ]
+  },
+  {
+    "id": "bus-3",
+    "slug": "sustainable-shipping-maritime-bonds",
+    "title": "Green Maritime Bonds Surge as Fleets Adopt Zero-Emission Ammonia Propulsion",
+    "shortdescription": "Shipowners secure record capital financing to retrofit commercial container vessels with dual-fuel ammonia engines.",
+    "category": "business",
+    "date": "August 14, 2026",
+    "author": {
+      "name": "Helena Vance",
+      "role": "Global Markets Analyst",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
+      "bio": "Senior financial editor with 15 years experience covering central bank monetary policies.",
+      "email": "h.vance@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200",
+    "description": [
+      {
+        "subtitle": "Decarbonizing Global Supply Chains",
+        "text": "Ocean cargo conglomerates have issued $12.5 billion in green sustainability-linked bonds this quarter, directed toward retrofitting mega-container vessels with zero-carbon ammonia and methanol combustion systems."
+      },
+      {
+        "subtitle": "Investor Demand and Yield Spreads",
+        "text": "Institutional ESG funds oversubscribed the debt offerings by nearly three to one, drawn by tight credit spreads and clear regulatory timelines mandated by the International Maritime Organization."
+      }
+    ]
+  }
+]

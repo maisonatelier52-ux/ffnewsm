@@ -1,0 +1,92 @@
+[
+  {
+    "id": "world-1",
+    "slug": "deep-sea-mapping-expedition",
+    "title": "Autonomous Deep Sea Mapping Expedition Uncovers Uncharted Ecosystems",
+    "shortdescription": "Robotic submersibles explore abyssal ocean trenches, discovering biological habitats previously unknown to marine science.",
+    "category": "world",
+    "date": "August 18, 2026",
+    "author": {
+      "name": "Marco Silva",
+      "role": "Oceanic Specialist",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "bio": "Senior marine correspondent focusing on ocean exploration and environmental policy.",
+      "email": "m.silva@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200",
+    "description": [
+      {
+        "subtitle": "Unprecedented Oceanographic Telemetry",
+        "text": "Deep-sea robotic submersibles equipped with multi-beam sonar arrays have mapped over 12,000 square kilometers of uncharted abyssal trenches in the South Pacific. The high-resolution bathymetric telemetry has provided researchers with unprecedented insight into tectonic activity beneath the ocean floor."
+      },
+      {
+        "subtitle": "Benthic Biodiversity Discoveries",
+        "text": "Preliminary biological samples reveal hydrothermal vent ecosystems supporting novel chemosynthetic organisms previously unclassified by marine biologists. Microscopic genomic sequencing suggests these benthic communities have evolved in near-complete isolation for millions of years."
+      },
+      {
+        "subtitle": "Global Conservation Policy Implications",
+        "text": "Oceanographers and international legal experts emphasize that these findings reinforce the imperative for stringent deep-sea mining regulations. As commercial consortiums seek seabed mineral rights, international marine authorities face mounting pressure to establish protected ecological sanctuaries."
+      },
+      {
+        "subtitle": "Autonomous Technology Frontiers",
+        "text": "The mission marks a landmark triumph for autonomous marine craft. Operating at depths exceeding 6,000 meters for 45 consecutive days without human intervention, the submersibles demonstrated extraordinary durability and acoustic communication capabilities across vast thermal gradients."
+      }
+    ]
+  },
+  {
+    "id": "world-2",
+    "slug": "nordic-renewable-energy-corridor",
+    "title": "Nordic Nations Inaugurate Subsea Interconnector for Trans-European Green Power",
+    "shortdescription": "A 900-kilometer high-voltage direct current grid links offshore wind networks across Scandinavia, strengthening energy resilience.",
+    "category": "world",
+    "date": "August 17, 2026",
+    "author": {
+      "name": "Astrid Lindqvist",
+      "role": "Energy & Climate Editor",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150",
+      "bio": "Stockholm-based analyst covering energy transition and European infrastructure.",
+      "email": "a.lindqvist@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200",
+    "description": [
+      {
+        "subtitle": "Trans-North Sea Infrastructure Grid",
+        "text": "Energy ministers from Norway, Sweden, Denmark, and Germany assembled in Oslo to officially commission the North Sea Interconnector—a state-of-the-art subsea electrical artery capable of transmitting 3.4 gigawatts of continuous clean electricity across regional boundaries."
+      },
+      {
+        "subtitle": "Stabilizing Seasonal Power Grids",
+        "text": "By balancing intermittent wind farm production off the Dogger Bank with Norwegian hydro-reservoir capacity, the multi-national grid significantly dampens wholesale electricity price volatility while curtailing fossil-fuel peaker plant deployments during winter peak loads."
+      },
+      {
+        "subtitle": "Engineering Feats in Deep Waters",
+        "text": "Laying heavy double-shielded cable across treacherous seabed terrain required custom vessel engineering and precise robotic trenching. The cable incorporates continuous fiber-optic sensing arrays to detect thermal anomalies and strain in real time."
+      }
+    ]
+  },
+  {
+    "id": "world-3",
+    "slug": "geneva-diplomatic-climate-pact",
+    "title": "Diplomats Reach Consensus on Global Water Rights Accord in Geneva",
+    "shortdescription": "Representatives from 140 sovereign states sign a binding international framework establishing equitable river basin stewardship.",
+    "category": "world",
+    "date": "August 15, 2026",
+    "author": {
+      "name": "Jean-Luc Dubois",
+      "role": "Diplomatic Correspondent",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "bio": "Geneva bureau chief specializing in UN affairs and multilateral treaties.",
+      "email": "j.dubois@nordicchronicle.com"
+    },
+    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=1200",
+    "description": [
+      {
+        "subtitle": "A Watershed Multilateral Framework",
+        "text": "After three weeks of intensive closed-door negotiations at the Palais des Nations, negotiators ratified the Geneva Water Accord, creating transparent arbitration mechanisms for transboundary river basins across Asia, Africa, and the Americas."
+      },
+      {
+        "subtitle": "Data Sharing and Satellite Monitoring",
+        "text": "Under the terms of the treaty, upstream nations commit to sharing real-time hydrological sensor feeds and high-frequency satellite imagery to ensure predictable downstream flow allocations during severe drought conditions."
+      }
+    ]
+  }
+]
