@@ -1,19 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArticlesByCategory, CATEGORIES } from '@/lib/newsData';
-import {
-  ArrowRight,
-  Globe,
-  Landmark,
-  ShieldAlert,
-  TrendingUp,
-  Leaf,
-  Scale,
-  FlaskConical,
-  HeartPulse,
-  Compass,
-} from 'lucide-react';
+import { getArticlesByCategory, getAllArticles, CATEGORIES } from '@/lib/newsData';
+import { ArrowRight } from 'lucide-react';
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -39,7 +28,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const articles = getArticlesByCategory(normalizedCat);
+  const categoryArticles = getArticlesByCategory(normalizedCat);
+  const otherArticles = getAllArticles().filter(
+    (a) => a.category.toLowerCase() !== normalizedCat
+  );
+  const articles = [...categoryArticles, ...otherArticles];
   const categoryInfo = CATEGORIES.find((c) => c.slug === normalizedCat) || {
     label: normalizedCat.toUpperCase(),
   };
@@ -56,37 +49,60 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="w-full bg-white text-black font-sans py-8 space-y-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-10">
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-widest">
           <Link href="/" className="hover:text-black transition-colors">HOME</Link>
-          <span>&gt;</span>
+          <span>/</span>
           <span className="text-black">{categoryInfo.label}</span>
         </div>
 
-        {/* Classic Header Split: Title & Subtitle Left + Spotlight Featured Card Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pb-8 border-b border-zinc-200">
+        {/* Classic Header Split: Title, Description & Image Article Left + Spotlight Featured Card Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left 5 Cols: Title & Description */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
+          {/* Left 5 Cols: Title, Description & Featured Image Article */}
+          <div className="lg:col-span-5 space-y-4">
             <h1 className="text-4xl sm:text-5xl font-serif font-black text-black tracking-tight uppercase leading-none">
               {categoryInfo.label}
             </h1>
             <p className="text-xs sm:text-sm font-sans text-zinc-600 leading-relaxed">
               {categoryDescriptions[normalizedCat]}
             </p>
-            <div className="pt-2 text-[10px] font-sans text-zinc-400 font-bold uppercase tracking-widest">
-              {articles.length} FEATURED DISPATCHES
-            </div>
+
+            {articles[1] && (
+              <Link
+                href={`/${articles[1].category}/${articles[1].slug}`}
+                className="group block space-y-2.5 pt-3 border-t border-zinc-100"
+              >
+                <div className="aspect-[16/9] overflow-hidden bg-black relative">
+                  <img
+                    src={articles[1].image}
+                    alt={articles[1].title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-base font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
+                    {articles[1].title}
+                  </h3>
+                  <p className="text-xs font-sans text-zinc-600 line-clamp-2 leading-relaxed">
+                    {articles[1].shortdescription}
+                  </p>
+                  <span className="text-[10px] font-sans text-zinc-400 font-bold uppercase tracking-wider block pt-0.5">
+                    {articles[1].date} • BY {articles[1].author.name}
+                  </span>
+                </div>
+              </Link>
+            )}
           </div>
 
-          {/* Right 7 Cols: Featured Story Spotlight Card */}
-          <div className="lg:col-span-7">
+          {/* Right 7 Cols: Featured Story Spotlight Card + 2 Articles in 1 Row Below */}
+          <div className="lg:col-span-7 space-y-4">
             {leadArticle && (
               <Link
                 href={`/${leadArticle.category}/${leadArticle.slug}`}
-                className="group relative block w-full h-full min-h-[300px] overflow-hidden bg-black flex flex-col justify-end p-6 sm:p-8"
+                className="group relative block w-full aspect-[16/9] min-h-[300px] overflow-hidden bg-black flex flex-col justify-end p-6 sm:p-8"
               >
                 <img
                   src={leadArticle.image}
@@ -114,114 +130,76 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </div>
               </Link>
             )}
-          </div>
-        </div>
 
-        {/* Subcategory Navigation Bar */}
-        <div className="py-2 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2 min-w-max">
-            <button className="flex items-center gap-2 px-4 py-2 bg-black text-white font-sans text-xs font-bold uppercase tracking-wider">
-              <Globe className="w-3.5 h-3.5" />
-              <span>All {categoryInfo.label}</span>
-            </button>
-            
-            {[
-              { label: 'Politics', icon: Landmark },
-              { label: 'Conflict', icon: ShieldAlert },
-              { label: 'Economy', icon: TrendingUp },
-              { label: 'Environment', icon: Leaf },
-              { label: 'Human Rights', icon: Scale },
-              { label: 'Science', icon: FlaskConical },
-              { label: 'Health', icon: HeartPulse },
-              { label: 'Culture', icon: Compass },
-            ].map((item, idx) => {
-              const IconComp = item.icon;
-              return (
-                <button
-                  key={idx}
-                  className="flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-zinc-100 border border-zinc-200 text-zinc-700 font-sans text-xs font-bold uppercase tracking-wider transition-colors"
+            {/* 2 News Articles (2 in 1 Row) Below Featured Story: Headline Left + Small Image Right */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+              {articles.slice(2, 4).map((art) => (
+                <Link
+                  key={art.id}
+                  href={`/${art.category}/${art.slug}`}
+                  className="group flex gap-3 items-start"
                 >
-                  <IconComp className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
+                  <div className="flex-1 space-y-1 min-w-0">
+                    <h4 className="text-xs sm:text-sm font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
+                      {art.title}
+                    </h4>
+                    <span className="text-[9px] font-sans text-zinc-400 font-semibold block pt-0.5">
+                      {art.date}
+                    </span>
+                  </div>
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 overflow-hidden bg-black shrink-0">
+                    <img
+                      src={art.image}
+                      alt={art.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Main Content Grid: Left 8 Cols (TOP STORIES) + Right 4 Cols (MOST READ Sidebar) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Main Content Grid: Left 8 Cols (All Category Articles) + Right 4 Cols (MOST READ Sidebar) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-6 border-t border-zinc-200">
           
-          {/* Left 8 Cols: TOP STORIES */}
+          {/* Left 8 Cols: All Category Articles */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="flex items-center justify-between pb-2 border-b-2 border-black">
-              <h2 className="text-base font-serif font-black text-black uppercase tracking-tight">
-                TOP STORIES
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-              {/* Left Main Story (6 Cols) */}
-              {articles[1] && (
-                <div className="md:col-span-6 space-y-3">
-                  <Link href={`/${articles[1].category}/${articles[1].slug}`} className="group block space-y-3">
-                    <div className="aspect-[16/10] overflow-hidden bg-black">
-                      <img
-                        src={articles[1].image}
-                        alt={articles[1].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+              {articles.slice(4).map((art) => (
+                <Link
+                  key={art.id}
+                  href={`/${art.category}/${art.slug}`}
+                  className="group block space-y-2.5 pb-4 border-b border-zinc-100"
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-black relative">
+                    <img
+                      src={art.image}
+                      alt={art.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="space-y-1">
                     <span className="text-[10px] font-sans font-black uppercase tracking-widest text-zinc-500 block">
-                      {articles[1].category}
+                      {art.category}
                     </span>
-                    <h3 className="text-base font-serif font-extrabold text-black group-hover:underline leading-snug">
-                      {articles[1].title}
+                    <h3 className="text-base font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
+                      {art.title}
                     </h3>
-                    <p className="text-xs font-sans text-zinc-600 line-clamp-3 leading-relaxed">
-                      {articles[1].shortdescription}
+                    <p className="text-xs font-sans text-zinc-600 line-clamp-2 leading-relaxed">
+                      {art.shortdescription}
                     </p>
-                    <div className="text-[10px] font-sans text-zinc-400 font-bold uppercase tracking-wider">
-                      {articles[1].date} • BY {articles[1].author.name}
-                    </div>
-                  </Link>
-                </div>
-              )}
-
-              {/* Right 3 Horizontal Articles Stack (6 Cols) */}
-              <div className="md:col-span-6 space-y-5">
-                {articles.slice(2, 5).map((art) => (
-                  <Link
-                    key={art.id}
-                    href={`/${art.category}/${art.slug}`}
-                    className="group grid grid-cols-12 gap-3 items-center"
-                  >
-                    <div className="col-span-4 aspect-[4/3] overflow-hidden bg-black shrink-0">
-                      <img
-                        src={art.image}
-                        alt={art.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="col-span-8 space-y-1">
-                      <span className="text-[9px] font-sans font-black uppercase tracking-widest text-zinc-500 block">
-                        {art.category}
-                      </span>
-                      <h4 className="text-xs font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
-                        {art.title}
-                      </h4>
-                      <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-zinc-400 block pt-0.5">
-                        {art.date} • BY {art.author.name}
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                    <span className="text-[10px] font-sans text-zinc-400 font-bold uppercase tracking-wider block pt-1">
+                      {art.date} • BY {art.author.name}
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Right 4 Cols: MOST READ Sidebar Box */}
-          <div className="lg:col-span-4 bg-white border border-zinc-200 p-5 space-y-5">
+          {/* Right 4 Cols: Sticky MOST READ Sidebar Box */}
+          <div className="lg:col-span-4 sticky top-24 self-start bg-white border border-zinc-200 p-5 space-y-5">
             <div className="pb-2 border-b-2 border-black">
               <h3 className="text-base font-serif font-black text-black uppercase tracking-tight">
                 MOST READ
@@ -229,7 +207,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </div>
 
             <div className="space-y-4">
-              {articles.slice(0, 5).map((art, idx) => (
+              {articles.map((art, idx) => (
                 <Link
                   key={art.id}
                   href={`/${art.category}/${art.slug}`}
@@ -257,12 +235,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               ))}
             </div>
 
-            <div className="pt-2">
-              <button className="w-full py-2 border border-zinc-300 hover:border-black font-sans text-xs font-bold uppercase tracking-widest text-black flex items-center justify-center gap-1.5 transition-colors">
-                <span>View All Most Read</span>
-                <span>→</span>
-              </button>
-            </div>
           </div>
 
         </div>

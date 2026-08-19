@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Mail, CheckCircle2, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
+import { CATEGORIES } from '@/lib/newsData';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-black text-white border-t border-black pt-12 pb-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
         {/* Brand Bar & Newsletter Subscription */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-zinc-800">
           <div className="lg:col-span-6 space-y-4">
@@ -30,20 +31,11 @@ export default function Footer() {
             <p className="text-xs font-sans text-zinc-400 leading-relaxed max-w-md">
               An independent international journal dedicated to investigative reporting, ocean science, global financial telemetry, and cultural analysis. Published under Swedish Press Freedom Acts.
             </p>
-            <div className="flex items-center gap-4 text-[11px] font-sans uppercase tracking-widest text-zinc-400 font-bold pt-1">
-              <span className="flex items-center gap-1.5 text-white">
-                <ShieldCheck className="w-4 h-4 text-white" /> Independent Trust
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5 text-zinc-300">
-                <Globe className="w-4 h-4 text-white" /> 14 Global Bureaus
-              </span>
-            </div>
           </div>
 
           <div className="lg:col-span-6 bg-zinc-900 p-6 sm:p-8 space-y-4 border border-zinc-800 rounded-none">
             <h4 className="text-lg font-serif font-bold text-white uppercase tracking-tight">
-              Subscribe to The Daily Nordic Dispatch
+              Subscribe to The Daily Dispatch
             </h4>
             <p className="text-xs font-sans text-zinc-400">
               Delivered daily at 06:00 UTC. Essential intelligence for policy directors, researchers, and global executives.
@@ -85,31 +77,13 @@ export default function Footer() {
               CATEGORIES
             </h3>
             <ul className="space-y-2.5 text-xs font-sans text-zinc-400">
-              <li>
-                <Link href="/world" className="hover:text-white transition-colors">
-                  World News
-                </Link>
-              </li>
-              <li>
-                <Link href="/business" className="hover:text-white transition-colors">
-                  Business &amp; Finance
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology" className="hover:text-white transition-colors">
-                  Technology &amp; Quantum
-                </Link>
-              </li>
-              <li>
-                <Link href="/entertainment" className="hover:text-white transition-colors">
-                  Entertainment &amp; Culture
-                </Link>
-              </li>
-              <li>
-                <Link href="/us" className="hover:text-white transition-colors">
-                  Sports &amp; US Affairs
-                </Link>
-              </li>
+              {CATEGORIES.filter(c => c.slug !== 'home').map((cat) => (
+                <li key={cat.slug}>
+                  <Link href={cat.path} className="hover:text-white transition-colors uppercase font-bold">
+                    {cat.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -125,8 +99,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/team" className="hover:text-white transition-colors">
+                  Our Team
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact Bureau
+                  Contact
                 </Link>
               </li>
               <li>
@@ -136,7 +115,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/legal" className="hover:text-white transition-colors">
-                  Legal &amp; Entity Disclosures
+                  Legal
                 </Link>
               </li>
               <li>
@@ -155,7 +134,7 @@ export default function Footer() {
           {/* POLICIES */}
           <div className="space-y-4">
             <h3 className="text-xs font-sans font-black uppercase tracking-widest text-white pb-2 border-b border-zinc-800">
-              ETHICS &amp; POLICIES
+              POLICIES
             </h3>
             <ul className="space-y-2.5 text-xs font-sans text-zinc-400">
               <li>
@@ -165,7 +144,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/privacy-policy" className="hover:text-white transition-colors">
-                  Privacy Policy (GDPR)
+                  Privacy Policy
                 </Link>
               </li>
               <li>
@@ -180,7 +159,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/faq" className="hover:text-white transition-colors">
-                  Frequently Asked Questions (FAQ)
+                  Faq
                 </Link>
               </li>
             </ul>
@@ -189,20 +168,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans text-zinc-500">
-          <p>© 2026 The Nordic Chronicle Media Group AB. Registered under Press Freedom Act.</p>
-          <div className="flex items-center gap-4">
-            <Link href="/privacy-policy" className="hover:text-zinc-300 transition-colors">
-              Privacy Disclosures
-            </Link>
-            <span>•</span>
-            <Link href="/terms-and-conditions" className="hover:text-zinc-300 transition-colors">
-              Syndication Rules
-            </Link>
-            <span>•</span>
-            <Link href="/legal" className="hover:text-zinc-300 transition-colors">
-              DMCA Compliance
-            </Link>
-          </div>
+          <p>© 2026 Domain Name. Registered under Press Freedom Act.</p>
         </div>
       </div>
     </footer>

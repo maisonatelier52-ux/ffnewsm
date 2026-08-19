@@ -7,13 +7,18 @@
     "category": "business",
     "date": "August 18, 2026",
     "author": {
-      "name": "Helena Vance",
-      "role": "Global Markets Analyst",
-      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
-      "bio": "Senior financial editor with 15 years experience covering central bank monetary policies.",
-      "email": "h.vance@nordicchronicle.com"
+      "name": "Genevieve St. Clair",
+      "role": "Central Bank & Liquidity Lead",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop",
+      "bio": "Financial economist and central banking correspondent covering digital ledger liquidity, corporate treasury, and sovereign currency markets.",
+      "email": "g.stclair@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:g.stclair@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200",
+    "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Instant Institutional Settlement",
@@ -37,13 +42,18 @@
     "category": "business",
     "date": "August 16, 2026",
     "author": {
-      "name": "Siddharth Rao",
-      "role": "Tech Industry Reporter",
-      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-      "bio": "Specialist in microelectronics, semiconductor supply chains, and industrial capital expenditure.",
-      "email": "s.rao@nordicchronicle.com"
+      "name": "Kaelen Thorne-Devlin",
+      "role": "Semiconductor & Hardware Reporter",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+      "bio": "Technology analyst investigating sub-nanometer wafer fabrication, microelectronics, and global capital expenditure.",
+      "email": "k.thornedevlin@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:k.thornedevlin@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Sub-Nanometer Manufacturing Milestones",
@@ -63,13 +73,18 @@
     "category": "business",
     "date": "August 14, 2026",
     "author": {
-      "name": "Helena Vance",
-      "role": "Global Markets Analyst",
-      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
-      "bio": "Senior financial editor with 15 years experience covering central bank monetary policies.",
-      "email": "h.vance@nordicchronicle.com"
+      "name": "Genevieve St. Clair",
+      "role": "Central Bank & Liquidity Lead",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop",
+      "bio": "Financial economist and central banking correspondent covering digital ledger liquidity, corporate treasury, and sovereign currency markets.",
+      "email": "g.stclair@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:g.stclair@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200",
+    "image": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Decarbonizing Global Supply Chains",

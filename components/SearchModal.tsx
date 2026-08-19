@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, X } from 'lucide-react';
+import { Search, X, Calendar } from 'lucide-react';
 import { searchArticles, Article } from '@/lib/newsData';
 
 interface SearchModalProps {
@@ -13,6 +13,14 @@ interface SearchModalProps {
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Article[]>([]);
+
+  const popularTopics = [
+    { label: 'Technology', value: 'technology' },
+    { label: 'Markets', value: 'business' },
+    { label: 'Climate', value: 'energy' },
+    { label: 'World', value: 'world' },
+    { label: 'US', value: 'us' },
+  ];
 
   useEffect(() => {
     if (query.trim()) {
@@ -39,82 +47,107 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-full left-0 right-0 z-50 bg-black text-white border-b-2 border-black shadow-2xl animate-in slide-in-from-top-2 duration-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5 space-y-4">
-        
-        {/* Clean Search Input Bar */}
-        <div className="flex items-center gap-3">
-          <Search className="w-5 h-5 text-white shrink-0" />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search articles by title, topic, author, or keyword..."
-            className="flex-1 bg-transparent text-lg sm:text-xl font-sans outline-none text-white placeholder:text-zinc-500 font-bold"
-            autoFocus
-          />
-          {query && (
-            <button
-              onClick={() => setQuery('')}
-              className="text-xs font-sans uppercase tracking-widest text-zinc-400 hover:text-white px-2 py-1 font-bold"
-            >
-              CLEAR
-            </button>
-          )}
-          <button
-            onClick={onClose}
-            className="p-1 hover:bg-zinc-800 text-zinc-300 hover:text-white transition-colors"
-            aria-label="Close search"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Live Search Results Container */}
-        {query.trim() && (
-          <div className="max-h-[55vh] overflow-y-auto pt-2 border-t border-zinc-800 space-y-3">
-            {results.length === 0 ? (
-              <div className="text-center py-6">
-                <p className="text-sm font-sans text-zinc-400 uppercase tracking-widest font-bold">
-                  No dispatches found matching &ldquo;{query}&rdquo;
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                <div className="text-[10px] font-sans uppercase tracking-widest text-zinc-400 font-black">
-                  {results.length} DISPATCH{results.length > 1 ? 'ES' : ''} FOUND
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {results.map((article) => (
-                    <Link
-                      key={article.id}
-                      href={`/${article.category}/${article.slug}`}
-                      onClick={onClose}
-                      className="block p-4 bg-zinc-900 hover:bg-white hover:text-black transition-all group border border-zinc-800"
-                    >
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="bg-white text-black group-hover:bg-black group-hover:text-white text-[10px] font-sans font-black uppercase tracking-widest px-2 py-0.5">
-                          {article.category}
-                        </span>
-                        <span className="text-xs text-zinc-400 group-hover:text-zinc-700 font-sans">
-                          {article.date}
-                        </span>
-                      </div>
-                      <h4 className="text-base font-serif font-bold text-white group-hover:text-black leading-snug mb-1">
-                        {article.title}
-                      </h4>
-                      <p className="text-xs font-sans text-zinc-400 group-hover:text-zinc-600 line-clamp-2">
-                        {article.shortdescription}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
+    <div className="absolute top-full right-4 sm:right-8 lg:right-16 z-50 mt-2 w-[calc(100vw-2rem)] sm:w-[460px] bg-white text-zinc-900 rounded-3xl p-6 shadow-2xl border border-zinc-200/90 animate-in fade-in slide-in-from-top-2 duration-200 font-sans">
+      
+      {/* Card Header Row */}
+      <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
+        <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-800">
+          SEARCH HEADLINES &amp; NEWS
+        </span>
+        <button
+          onClick={onClose}
+          className="p-1 text-zinc-400 hover:text-zinc-900 transition-colors rounded-full hover:bg-zinc-100"
+          aria-label="Close search"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
+
+      {/* Rounded Search Input Box */}
+      <div className="mt-4 flex items-center bg-white border border-zinc-200 rounded-full px-4 py-2.5 shadow-sm focus-within:border-zinc-400 focus-within:ring-2 focus-within:ring-zinc-100 transition-all">
+        <Search className="w-4 h-4 text-zinc-400 shrink-0 mr-2.5" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Type keywords to search news..."
+          className="w-full bg-transparent text-sm font-sans outline-none text-zinc-900 placeholder:text-zinc-400 font-normal"
+          autoFocus
+        />
+        {query && (
+          <button
+            onClick={() => setQuery('')}
+            className="text-[10px] font-sans font-bold uppercase tracking-wider text-zinc-400 hover:text-black shrink-0 ml-1"
+          >
+            CLEAR
+          </button>
+        )}
+      </div>
+
+      {/* Popular Topics Section */}
+      {!query.trim() && (
+        <div className="mt-5 pt-1 space-y-2.5">
+          <span className="text-xs font-sans font-bold text-zinc-700 block">
+            Popular Topics:
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            {popularTopics.map((topic) => (
+              <button
+                key={topic.value}
+                onClick={() => setQuery(topic.label)}
+                className="px-3.5 py-1.5 bg-zinc-100 hover:bg-zinc-900 hover:text-white text-zinc-700 text-xs font-sans font-medium rounded-full cursor-pointer transition-all duration-150"
+              >
+                {topic.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Live Search Results List */}
+      {query.trim() && (
+        <div className="mt-4 pt-3 border-t border-zinc-100 max-h-[340px] overflow-y-auto space-y-3 pr-1">
+          {results.length === 0 ? (
+            <div className="text-center py-6">
+              <p className="text-xs font-sans text-zinc-500 uppercase tracking-widest font-bold">
+                No news articles found matching &ldquo;{query}&rdquo;
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              <div className="text-[10px] font-sans uppercase tracking-widest text-zinc-400 font-bold px-1">
+                {results.length} NEWS ARTICLE{results.length > 1 ? 'S' : ''} FOUND
+              </div>
+              <div className="space-y-2">
+                {results.map((article) => (
+                  <Link
+                    key={article.id}
+                    href={`/${article.category}/${article.slug}`}
+                    onClick={onClose}
+                    className="block p-3.5 bg-zinc-50 hover:bg-zinc-100 transition-all group border border-zinc-200/70 rounded-2xl space-y-1.5"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="bg-zinc-200 text-zinc-800 text-[9px] font-sans font-bold uppercase tracking-widest px-2 py-0.5 rounded-full">
+                        {article.category}
+                      </span>
+                      <span className="text-[10px] text-zinc-400 font-sans flex items-center gap-1">
+                        <Calendar className="w-3 h-3" /> {article.date}
+                      </span>
+                    </div>
+                    <h4 className="font-serif font-bold text-zinc-900 group-hover:underline text-sm leading-snug">
+                      {article.title}
+                    </h4>
+                    <p className="text-[11px] font-sans text-zinc-600 line-clamp-2 leading-relaxed">
+                      {article.shortdescription}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
     </div>
   );
 }

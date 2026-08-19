@@ -7,13 +7,18 @@
     "category": "us",
     "date": "August 18, 2026",
     "author": {
-      "name": "David K. Miller",
-      "role": "Chief Sports Correspondent",
-      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
-      "bio": "Veteran sports journalist covering Olympic games, athletics, and sports science.",
-      "email": "d.miller@nordicchronicle.com"
+      "name": "Sterling Vance-Kingsley",
+      "role": "World Athletics & Biomechanics Chief",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+      "bio": "Senior sports science writer analyzing decathlon biomechanics, high-performance footwear, and human endurance technology.",
+      "email": "s.vancekingsley@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:s.vancekingsley@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
+    "image": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "A Masterclass in Multi-Discipline Endurance",
@@ -37,13 +42,18 @@
     "category": "us",
     "date": "August 17, 2026",
     "author": {
-      "name": "Sarah Jenkins",
-      "role": "US Infrastructure Reporter",
-      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-      "bio": "Washington bureau writer focusing on transportation, urban policy, and regional development.",
-      "email": "s.jenkins@nordicchronicle.com"
+      "name": "Evelyn St. John",
+      "role": "Transit Systems & Urban Mobility Writer",
+      "image": "https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=800&auto=format&fit=crop",
+      "bio": "Infrastructure correspondent investigating high-speed bullet rail corridors, urban transit policy, and zero-carbon mobility.",
+      "email": "e.stjohn@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:e.stjohn@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1515165562839-978402924d5e?w=1200",
+    "image": "https://images.unsplash.com/photo-1543832923-44667f44c804?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Connecting Metropolitan Economies",
@@ -63,13 +73,18 @@
     "category": "us",
     "date": "August 14, 2026",
     "author": {
-      "name": "David K. Miller",
-      "role": "Chief Sports Correspondent",
-      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
-      "bio": "Veteran sports journalist covering Olympic games, athletics, and sports science.",
-      "email": "d.miller@nordicchronicle.com"
+      "name": "Sterling Vance-Kingsley",
+      "role": "World Athletics & Biomechanics Chief",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+      "bio": "Senior sports science writer analyzing decathlon biomechanics, high-performance footwear, and human endurance technology.",
+      "email": "s.vancekingsley@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:s.vancekingsley@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    "image": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Formula 1 on the Sea",

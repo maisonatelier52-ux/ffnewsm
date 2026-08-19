@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Article, ArticleSection } from '@/lib/newsData';
-import { Calendar, Clock, Share2, Bookmark, CheckCircle2, Mail, MessageSquare, Send, ArrowRight } from 'lucide-react';
+import { Article } from '@/lib/newsData';
+import { Calendar, Clock, Share2, Bookmark, CheckCircle2, Mail, MessageSquare, Send, ArrowRight, Quote } from 'lucide-react';
 
 interface ArticleDetailClientProps {
   article: Article;
@@ -81,322 +81,373 @@ export default function ArticleDetailClient({
   };
 
   const descriptionSections = article.description || [];
-  const firstSection = descriptionSections[0];
-  const secondSection = descriptionSections[1];
-  const remainingSections = descriptionSections.slice(2);
 
   return (
-    <article className="w-full bg-white text-black py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <article className="w-full bg-white text-zinc-900 font-sans py-8 sm:py-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-6">
         
-        {/* 1. EDITORIAL HEADER SECTION */}
-        <header className="mb-10 pb-6 border-b-2 border-black">
-          <div className="flex items-center justify-between mb-4">
-            <span className="bg-black text-white text-[10px] font-sans font-black uppercase tracking-widest px-3 py-1">
-              {article.category}
-            </span>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsBookmarked(!isBookmarked)}
-                className={`flex items-center gap-1.5 px-3 py-1 text-xs font-sans font-bold uppercase tracking-wider transition-colors border border-black ${
-                  isBookmarked
-                    ? 'bg-black text-white'
-                    : 'bg-white text-black hover:bg-black hover:text-white'
-                }`}
+        {/* Breadcrumbs placed above grid for exact top alignment */}
+        <div className="flex items-center gap-2.5 text-xs font-sans font-bold uppercase tracking-widest text-zinc-500">
+          <Link href="/" className="hover:text-black transition-colors">HOME</Link>
+          <span>/</span>
+          <Link href={`/${article.category}`} className="hover:text-black transition-colors">{article.category}</Link>
+        </div>
+
+        {/* ================= MAIN 2-COLUMN SPLIT (FLUSH TOP ALIGNED) ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Left 8 Columns: Header, Compact Hero Image, & Narrative Body */}
+          <div className="lg:col-span-8 space-y-8">
+            
+            {/* 1. CLASSIC EDITORIAL HEADER */}
+            <header className="space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-black leading-tight tracking-tight">
+                {article.title}
+              </h1>
+
+              <p className="text-base sm:text-lg font-sans text-zinc-600 leading-relaxed font-normal">
+                {article.shortdescription}
+              </p>
+
+            {/* Byline Bar */}
+            <div className="py-3 border-t border-b border-zinc-200 flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
+              <Link
+                href={`/author/${article.author.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`}
+                className="group flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
-                <Bookmark className="w-3.5 h-3.5" />
-                <span>{isBookmarked ? 'Saved' : 'Save'}</span>
-              </button>
-
-              <button
-                onClick={handleShare}
-                className="flex items-center gap-1.5 px-3 py-1 text-xs font-sans font-bold uppercase tracking-wider bg-white text-black border border-black hover:bg-black hover:text-white transition-colors"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-                <span>{copiedLink ? 'Copied' : 'Share'}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Main Title Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black text-black leading-[1.02] tracking-tight mb-4">
-            {article.title}
-          </h1>
-
-          {/* Excerpt / Short description */}
-          <p className="text-lg sm:text-xl font-sans text-zinc-700 leading-relaxed font-normal mb-6 max-w-4xl">
-            {article.shortdescription}
-          </p>
-
-          {/* Metadata Bar */}
-          <div className="pt-4 border-t border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              {article.author.image && (
-                <img
-                  src={article.author.image}
-                  alt={article.author.name}
-                  className="w-12 h-12 object-cover grayscale border border-black"
-                />
-              )}
-              <div>
-                <p className="text-xs font-sans font-bold uppercase tracking-wider text-black">
-                  BY {article.author.name}
-                </p>
-                {article.author.role && (
-                  <p className="text-xs font-sans text-zinc-500">
-                    {article.author.role}
-                  </p>
+                {article.author.image && (
+                  <img
+                    src={article.author.image}
+                    alt={article.author.name}
+                    className="w-9 h-9 rounded-full object-cover"
+                  />
                 )}
+                <div>
+                  <span className="font-bold text-black uppercase tracking-wider group-hover:underline">
+                    BY {article.author.name}
+                  </span>
+                  {article.author.role && (
+                    <span className="text-zinc-500 block text-[11px]">{article.author.role}</span>
+                  )}
+                </div>
+              </Link>
+
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-zinc-500 font-bold uppercase tracking-wider">
+                  <span className="flex items-center gap-1 text-zinc-700">
+                    <Calendar className="w-3 h-3 text-zinc-400 shrink-0" />
+                    <span>{article.date}</span>
+                  </span>
+                  <span className="text-zinc-300">•</span>
+                  <span className="flex items-center gap-1 text-zinc-700">
+                    <Clock className="w-3 h-3 text-zinc-400 shrink-0" />
+                    <span>5 MIN READ</span>
+                  </span>
+
+                  <div className="flex items-center gap-1.5 sm:pl-2 sm:border-l sm:border-zinc-200">
+                    <button
+                      onClick={() => setIsBookmarked(!isBookmarked)}
+                      className={`flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
+                        isBookmarked
+                          ? 'bg-black text-white'
+                          : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
+                      }`}
+                    >
+                      <Bookmark className="w-3 h-3" />
+                      <span>{isBookmarked ? 'Saved' : 'Save'}</span>
+                    </button>
+
+                    <button
+                      onClick={handleShare}
+                      className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-bold rounded bg-zinc-100 text-zinc-700 hover:bg-zinc-200 transition-colors"
+                    >
+                      <Share2 className="w-3 h-3" />
+                      <span>{copiedLink ? 'Copied!' : 'Share'}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            </header>
 
-            <div className="flex items-center gap-4 text-xs font-sans font-bold uppercase tracking-widest text-zinc-500">
-              <span className="flex items-center gap-1 text-black">
-                <Calendar className="w-3.5 h-3.5" />
-                {article.date}
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1 text-black">
-                <Clock className="w-3.5 h-3.5" /> 5 MIN READ
-              </span>
-            </div>
-          </div>
-        </header>
-
-        {/* 2. ASYMMETRIC 2-COLUMN HERO SPLIT */}
-        <section className="mb-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Column (7 Cols): Article Hero Image */}
-            <div className="lg:col-span-7 space-y-2">
-              <div className="w-full h-[360px] sm:h-[440px] relative overflow-hidden bg-black">
+            {/* 2. COMPACT HERO IMAGE */}
+            <section className="space-y-2">
+              <div className="w-full aspect-[16/7.5] max-h-[350px] overflow-hidden rounded-md bg-black">
                 <img
                   src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-xs font-sans text-zinc-500 italic text-right uppercase tracking-wider font-bold">
+              <p className="text-[11px] font-sans text-zinc-400 italic text-right uppercase">
                 PRESS ARCHIVE PHOTO / VERIFIED DISPATCH TELEMETRY
               </p>
-            </div>
+            </section>
 
-            {/* Right Column (5 Cols): First Subtitle and primary narrative summary paragraphs */}
-            <div className="lg:col-span-5 bg-zinc-50 p-8 border-l-4 border-black space-y-4">
-              {firstSection && (
-                <>
-                  {firstSection.subtitle && (
-                    <h2 className="text-2xl font-serif font-black text-black leading-tight pb-2 border-b border-black">
-                      {firstSection.subtitle}
+            {/* 3. MAIN ARTICLE BODY CONTENT */}
+            <div className="space-y-6">
+              {descriptionSections.map((sec, idx) => (
+                <div key={idx} className="space-y-3">
+                  {sec.subtitle && (
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-black pt-2 pb-1 border-b border-zinc-100">
+                      {sec.subtitle}
                     </h2>
                   )}
-                  <p className="text-sm sm:text-base font-sans text-zinc-800 leading-relaxed">
-                    {firstSection.text}
+                  <p className="text-base sm:text-lg font-sans text-zinc-800 leading-relaxed font-normal">
+                    {sec.text}
                   </p>
-                </>
-              )}
 
-              {secondSection && (
-                <div className="pt-4 border-t border-zinc-300 space-y-2">
-                  {secondSection.subtitle && (
-                    <h3 className="text-lg font-serif font-bold text-black">
-                      {secondSection.subtitle}
-                    </h3>
+                  {/* Styled Classic Pull Quote */}
+                  {idx === 1 && (
+                    <blockquote className="my-6 p-5 bg-zinc-50 border-l-2 border-black rounded-r-md space-y-1">
+                      <Quote className="w-5 h-5 text-zinc-400" />
+                      <p className="text-base sm:text-lg font-serif italic text-black leading-relaxed">
+                        "Deep-sea telemetry findings provide researchers with unprecedented insight into tectonic activity and biological habitats."
+                      </p>
+                    </blockquote>
                   )}
-                  <p className="text-sm font-sans text-zinc-700 leading-relaxed">
-                    {secondSection.text}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* 3. CONTINUITY SECTION BELOW */}
-        <section className="max-w-4xl mx-auto space-y-10 mb-16">
-          {/* Remaining article paragraphs */}
-          {remainingSections.map((sec, idx) => (
-            <div key={idx} className="space-y-3 bg-white p-8 border-t border-b border-zinc-200">
-              {sec.subtitle && (
-                <h3 className="text-2xl font-serif font-bold text-black">
-                  {sec.subtitle}
-                </h3>
-              )}
-              <p className="text-base sm:text-lg font-sans text-zinc-800 leading-relaxed">
-                {sec.text}
-              </p>
-            </div>
-          ))}
-
-          {/* Centered Section Divider */}
-          <div className="text-center py-6">
-            <span className="text-2xl font-serif tracking-[0.6em] text-black font-black">
-              * * *
-            </span>
-          </div>
-
-          {/* Daily Editorial Newsletter Subscription Box (Pure Black Card) */}
-          <div className="bg-black text-white p-8 sm:p-12 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-zinc-400 font-black">
-              <Mail className="w-4 h-4 text-white" /> DAILY EDITORIAL BRIEFING
-            </div>
-            <h3 className="text-2xl sm:text-4xl font-serif font-black leading-tight">
-              Get The Nordic Dispatch Delivered Daily at 06:00 UTC
-            </h3>
-            <p className="text-sm font-sans text-zinc-300 max-w-xl leading-relaxed">
-              Join over 140,000 policy directors, researchers, and global executives receiving independent morning briefings.
-            </p>
-            {newsletterSubscribed ? (
-              <div className="p-4 bg-white text-black text-xs font-sans font-bold uppercase tracking-wider flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-black" />
-                <span>Subscription confirmed. Welcome to The Briefing.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 pt-2">
-                <input
-                  type="email"
-                  required
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter email address..."
-                  className="flex-1 bg-zinc-900 border border-zinc-700 text-white placeholder:text-zinc-500 px-4 py-3 text-sm font-sans outline-none focus:border-white transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="bg-white hover:bg-zinc-200 text-black px-6 py-3 text-xs font-sans font-extrabold uppercase tracking-widest transition-colors shrink-0 flex items-center justify-center gap-2"
-                >
-                  SUBSCRIBE <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
-          </div>
-
-          {/* Interactive Reader Comment Form */}
-          <div className="bg-white p-8 border border-black space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-black pb-4">
-              <h3 className="text-xl font-serif font-black text-black flex items-center gap-2 uppercase">
-                <MessageSquare className="w-5 h-5 text-black" />
-                READER DISCUSSION ({comments.length})
-              </h3>
-              <span className="text-xs font-sans text-zinc-500 uppercase tracking-widest font-bold">
-                MODERATED FORUM
-              </span>
-            </div>
-
-            {/* Comment Form */}
-            <form onSubmit={handleCommentSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-sans font-extrabold uppercase tracking-wider text-black mb-1">
-                    YOUR NAME *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={authorName}
-                    onChange={(e) => setAuthorName(e.target.value)}
-                    placeholder="e.g. Dr. Henrik Lind"
-                    className="w-full bg-zinc-50 border border-black p-3 text-sm font-sans outline-none focus:bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-sans font-extrabold uppercase tracking-wider text-black mb-1">
-                    EMAIL ADDRESS *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={authorEmail}
-                    onChange={(e) => setAuthorEmail(e.target.value)}
-                    placeholder="e.g. henrik@institute.org"
-                    className="w-full bg-zinc-50 border border-black p-3 text-sm font-sans outline-none focus:bg-white"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-sans font-extrabold uppercase tracking-wider text-black mb-1">
-                  COMMENT MESSAGE *
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  value={commentText}
-                  onChange={(e) => setCommentText(e.target.value)}
-                  placeholder="Share your perspective or academic feedback on this dispatch..."
-                  className="w-full bg-zinc-50 border border-black p-3 text-sm font-sans outline-none focus:bg-white"
-                />
-              </div>
-
-              {commentSubmitted && (
-                <div className="p-3 bg-black text-white text-xs font-sans font-bold uppercase tracking-wider">
-                  Thank you. Your comment has been posted to the discussion log.
-                </div>
-              )}
-
-              <button
-                type="submit"
-                className="bg-black hover:bg-zinc-800 text-white font-sans text-xs font-black uppercase tracking-widest px-8 py-3 flex items-center gap-2 transition-colors"
-              >
-                <Send className="w-3.5 h-3.5" /> SUBMIT COMMENT
-              </button>
-            </form>
-
-            {/* List of Reader Comments */}
-            <div className="pt-6 border-t border-zinc-300 space-y-4">
-              {comments.map((c) => (
-                <div key={c.id} className="p-5 bg-zinc-50 border-l-2 border-black space-y-1">
-                  <div className="flex items-center justify-between text-xs font-sans font-bold uppercase tracking-wider">
-                    <span className="text-black">{c.name}</span>
-                    <span className="text-zinc-400">{c.date}</span>
-                  </div>
-                  <p className="text-sm font-sans text-zinc-800 leading-relaxed">
-                    {c.text}
-                  </p>
                 </div>
               ))}
             </div>
+
           </div>
+
+          {/* Right 4 Columns: Sticky Sidebar starting flush at exact top alignment with headline */}
+          <div className="lg:col-span-4 sticky top-24 self-start space-y-6">
+            
+            {/* Right Side News Article List Box */}
+            <div className="bg-white border border-zinc-200 p-5 rounded-md space-y-4">
+              <div className="flex items-center justify-between border-b border-zinc-200 pb-2">
+                <h3 className="text-xs font-sans font-extrabold uppercase tracking-widest text-black">
+                  MORE IN {article.category.toUpperCase()}
+                </h3>
+                <span className="text-[10px] font-sans font-bold text-zinc-400 uppercase">
+                  LATEST STORIES
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {recommendedArticles.map((rec, idx) => (
+                  <Link
+                    key={rec.id}
+                    href={`/${rec.category}/${rec.slug}`}
+                    className="group flex gap-3 items-start pb-3 border-b border-zinc-100 last:border-0 last:pb-0"
+                  >
+                    <span className="text-lg font-serif font-black text-zinc-300 group-hover:text-black transition-colors shrink-0 leading-none pt-0.5">
+                      0{idx + 1}
+                    </span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-zinc-400 block">
+                        {rec.category}
+                      </span>
+                      <h4 className="text-xs font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
+                        {rec.title}
+                      </h4>
+                      <span className="text-[9px] font-sans text-zinc-400 block font-semibold">
+                        {rec.date}
+                      </span>
+                    </div>
+                    <div className="w-16 h-12 overflow-hidden bg-black shrink-0 rounded">
+                      <img
+                        src={rec.image}
+                        alt={rec.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+
+            {/* Author Profile Box */}
+            <div className="bg-white border border-zinc-200 p-5 rounded-md space-y-3">
+              <Link
+                href={`/author/${article.author.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`}
+                className="group flex items-center gap-3 hover:opacity-80 transition-opacity"
+              >
+                {article.author.image && (
+                  <img
+                    src={article.author.image}
+                    alt={article.author.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                )}
+                <div>
+                  <h4 className="text-xs font-sans font-bold text-black uppercase group-hover:underline">
+                    {article.author.name}
+                  </h4>
+                  <p className="text-[11px] font-sans text-zinc-500">{article.author.role}</p>
+                </div>
+              </Link>
+              {article.author.bio && (
+                <p className="text-xs font-sans text-zinc-600 leading-relaxed">
+                  {article.author.bio}
+                </p>
+              )}
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* ================= 4. DISCUSSION FORM & SUBSCRIPTION SIDE-BY-SIDE ================= */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          
+          {/* Left Column (8 cols): Reader Discussion Form - Matches top 8-col width */}
+          <div className="lg:col-span-8 bg-white border border-zinc-200 rounded-md p-6 sm:p-8 space-y-5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between border-b border-zinc-200 pb-3 mb-4">
+                <h3 className="text-base font-serif font-bold text-black flex items-center gap-2 uppercase">
+                  <MessageSquare className="w-4 h-4 text-black" />
+                  READER DISCUSSION
+                </h3>
+                <span className="text-[10px] font-sans text-zinc-400 uppercase tracking-widest font-bold">
+                  MODERATED FORUM
+                </span>
+              </div>
+
+              {/* Comment Form */}
+              <form onSubmit={handleCommentSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-sans font-bold uppercase tracking-wider text-black mb-1">
+                      YOUR NAME *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={authorName}
+                      onChange={(e) => setAuthorName(e.target.value)}
+                      placeholder="e.g. Dr. Henrik Lind"
+                      className="w-full bg-zinc-50 border border-zinc-200 rounded p-2.5 text-xs font-sans outline-none focus:bg-white focus:border-black"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-sans font-bold uppercase tracking-wider text-black mb-1">
+                      EMAIL ADDRESS *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={authorEmail}
+                      onChange={(e) => setAuthorEmail(e.target.value)}
+                      placeholder="e.g. henrik@institute.org"
+                      className="w-full bg-zinc-50 border border-zinc-200 rounded p-2.5 text-xs font-sans outline-none focus:bg-white focus:border-black"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-sans font-bold uppercase tracking-wider text-black mb-1">
+                    COMMENT MESSAGE *
+                  </label>
+                  <textarea
+                    rows={3}
+                    required
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    placeholder="Share your perspective on this article..."
+                    className="w-full bg-zinc-50 border border-zinc-200 rounded p-2.5 text-xs font-sans outline-none focus:bg-white focus:border-black"
+                  />
+                </div>
+
+                {commentSubmitted && (
+                  <div className="p-2.5 bg-black text-white text-xs font-sans font-bold uppercase tracking-wider rounded">
+                    Thank you. Your comment has been submitted to the moderation desk.
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="bg-black hover:bg-zinc-800 text-white font-sans text-xs font-bold uppercase tracking-widest px-6 py-2.5 rounded flex items-center gap-2 transition-colors"
+                >
+                  <Send className="w-3.5 h-3.5" /> SUBMIT COMMENT
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Right Column (4 cols): Daily Editorial Briefing Subscription - Matches top 4-col width */}
+          <div className="lg:col-span-4 bg-black text-white rounded-md p-6 sm:p-8 space-y-5 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-zinc-400 font-bold">
+                <Mail className="w-4 h-4 text-white" /> DAILY EDITORIAL BRIEFING
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold leading-tight text-white">
+                Get The Morning Dispatch Delivered Daily
+              </h3>
+              <p className="text-xs font-sans text-zinc-300 leading-relaxed">
+                Join over 140,000 policy directors, researchers, and executives receiving independent morning briefings.
+              </p>
+            </div>
+
+            <div>
+              {newsletterSubscribed ? (
+                <div className="p-3 bg-zinc-800 text-white text-xs font-sans font-bold uppercase tracking-wider rounded flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Subscription confirmed. Welcome.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                  <input
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="Enter your email address..."
+                    className="w-full bg-zinc-900 border border-zinc-700 text-white placeholder:text-zinc-500 px-4 py-3 text-xs font-sans rounded outline-none focus:border-white transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full bg-white hover:bg-zinc-200 text-black px-6 py-3 text-xs font-sans font-bold uppercase tracking-widest rounded transition-colors flex items-center justify-center gap-2"
+                  >
+                    SUBSCRIBE <ArrowRight className="w-4 h-4" />
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+
         </section>
 
-        {/* 4. RECOMMENDED ARTICLES GRID */}
+        {/* ================= 6. RECOMMENDED ARTICLES ================= */}
         {recommendedArticles.length > 0 && (
-          <section className="pt-10 border-t-2 border-black">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-serif font-black text-black uppercase">
+          <section className="pt-8 border-t border-zinc-200">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-serif font-bold text-black uppercase">
                 RECOMMENDED IN {article.category.toUpperCase()}
               </h3>
               <Link
                 href={`/${article.category}`}
-                className="text-xs font-sans font-extrabold uppercase tracking-widest text-black hover:underline"
+                className="text-xs font-sans font-bold uppercase tracking-widest text-zinc-500 hover:text-black transition-colors"
               >
                 SEE ALL IN {article.category.toUpperCase()} &rarr;
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {recommendedArticles.map((rec) => (
                 <Link
                   key={rec.id}
                   href={`/${rec.category}/${rec.slug}`}
-                  className="group block space-y-3"
+                  className="group block space-y-2.5"
                 >
-                  <div className="aspect-[16/10] overflow-hidden bg-black">
+                  <div className="aspect-[16/10] overflow-hidden bg-black rounded">
                     <img
                       src={rec.image}
                       alt={rec.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <span className="bg-black text-white text-[9px] font-sans font-black uppercase tracking-widest px-2 py-0.5 inline-block">
+                  <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-zinc-500 block">
                     {rec.category}
                   </span>
-                  <h4 className="text-xl font-serif font-bold text-black group-hover:underline leading-snug">
+                  <h4 className="text-base font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
                     {rec.title}
                   </h4>
-                  <p className="text-xs font-sans text-zinc-600 line-clamp-2">
+                  <p className="text-xs font-sans text-zinc-600 line-clamp-2 leading-relaxed">
                     {rec.shortdescription}
                   </p>
-                  <div className="text-[11px] font-sans text-zinc-400 font-bold uppercase tracking-wider">
+                  <div className="text-[10px] font-sans text-zinc-400 font-bold uppercase tracking-wider">
                     BY {rec.author.name} • {rec.date}
                   </div>
                 </Link>

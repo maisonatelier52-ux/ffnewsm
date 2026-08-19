@@ -9,12 +9,21 @@ export interface ArticleSection {
   text: string;
 }
 
+export interface AuthorSocials {
+  twitter?: string;
+  linkedin?: string;
+  website?: string;
+  email?: string;
+}
+
 export interface Author {
   name: string;
+  slug?: string;
   role?: string;
   image?: string;
   bio?: string;
   email?: string;
+  socials?: AuthorSocials;
 }
 
 export interface Article {
@@ -97,5 +106,56 @@ export function searchArticles(query: string): Article[] {
       article.shortdescription.toLowerCase().includes(q) ||
       article.category.toLowerCase().includes(q) ||
       article.author.name.toLowerCase().includes(q)
+  );
+}
+
+export function slugifyAuthor(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+export function getAllAuthors(): Author[] {
+  const articles = getAllArticles();
+  const authorMap = new Map<string, Author>();
+
+  articles.forEach((art) => {
+    if (!art.author || !art.author.name) return;
+    const slug = slugifyAuthor(art.author.name);
+    if (!authorMap.has(slug)) {
+      authorMap.set(slug, {
+        name: art.author.name,
+        slug,
+        role: art.author.role || 'Senior Correspondent',
+        image: art.author.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300',
+        bio: art.author.bio || `${art.author.name} is a senior editorial correspondent covering international developments, policy telemetry, and investigative reporting for Domain Name.`,
+        email: art.author.email || `${slug}@domainname.com`,
+        socials: {
+          twitter: `https://twitter.com/${slug}`,
+          linkedin: `https://linkedin.com/in/${slug}`,
+          website: `https://domainname.com`,
+          email: `mailto:${slug}@domainname.com`,
+        },
+      });
+    }
+  });
+
+  return Array.from(authorMap.values());
+}
+
+export function getAuthorBySlug(slug: string): Author | undefined {
+  const authors = getAllAuthors();
+  const norm = slug.toLowerCase();
+  return authors.find((a) => a.slug && a.slug.toLowerCase() === norm);
+}
+
+export function getArticlesByAuthor(authorNameOrSlug: string): Article[] {
+  const norm = authorNameOrSlug.toLowerCase();
+  const all = getAllArticles();
+  return all.filter(
+    (a) =>
+      a.author.name.toLowerCase() === norm ||
+      slugifyAuthor(a.author.name) === norm
   );
 }

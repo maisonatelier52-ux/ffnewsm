@@ -7,13 +7,18 @@
     "category": "technology",
     "date": "August 18, 2026",
     "author": {
-      "name": "Dr. Elena Rostova",
-      "role": "AI & Quantum Lead",
-      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-      "bio": "Former MIT researcher investigating bio-inspired computing and neural edge hardware.",
-      "email": "e.rostova@nordicchronicle.com"
+      "name": "Dr. Soren Kjaergaard",
+      "role": "Neural Systems & Quantum Analyst",
+      "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+      "bio": "Quantum physicist and AI hardware strategist researching bio-inspired neuromorphic computing architectures and neural edge devices.",
+      "email": "s.kjaergaard@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:s.kjaergaard@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200",
+    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "Mimicking Biological Synapses",
@@ -37,13 +42,18 @@
     "category": "technology",
     "date": "August 16, 2026",
     "author": {
-      "name": "Marcus Thorne",
-      "role": "Cybersecurity Editor",
-      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150",
-      "bio": "Specialist in cryptographic protocols, defense systems, and network security.",
-      "email": "m.thorne@nordicchronicle.com"
+      "name": "Cassandra Sterling",
+      "role": "Post-Quantum Cryptography Lead",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop",
+      "bio": "Cybersecurity director and cryptographer auditing lattice encryption algorithms, enterprise defense systems, and network handshakes.",
+      "email": "c.sterling@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:c.sterling@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200",
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "The Post-Quantum Migration Imperative",
@@ -63,13 +73,18 @@
     "category": "technology",
     "date": "August 13, 2026",
     "author": {
-      "name": "Dr. Elena Rostova",
-      "role": "AI & Quantum Lead",
-      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-      "bio": "Former MIT researcher investigating bio-inspired computing and neural edge hardware.",
-      "email": "e.rostova@nordicchronicle.com"
+      "name": "Dr. Soren Kjaergaard",
+      "role": "Neural Systems & Quantum Analyst",
+      "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+      "bio": "Quantum physicist and AI hardware strategist researching bio-inspired neuromorphic computing architectures and neural edge devices.",
+      "email": "s.kjaergaard@domainname.com",
+      "socials": {
+        "twitter": "https://twitter.com",
+        "linkedin": "https://linkedin.com",
+        "email": "mailto:s.kjaergaard@domainname.com"
+      }
     },
-    "image": "https://images.unsplash.com/photo-1558441719-aa3496474671?w=1200",
+    "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1600&q=85",
     "description": [
       {
         "subtitle": "A Paradigm Shift in Energy Density",

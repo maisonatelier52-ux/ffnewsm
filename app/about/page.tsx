@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Globe, CheckCircle2, Scale } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AboutPage() {
   const corePillars = [
@@ -26,24 +27,32 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="w-full bg-white text-black py-12 md:py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <div className="w-full bg-white text-zinc-900 font-sans py-8 sm:py-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-10">
+        
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2.5 text-xs font-sans font-bold uppercase tracking-widest text-zinc-500">
+          <Link href="/" className="hover:text-black transition-colors">HOME</Link>
+          <span>/</span>
+          <span>ABOUT US</span>
+        </div>
+
         {/* Header */}
-        <div className="max-w-3xl mb-12 pb-6 border-b-2 border-black">
-          <span className="bg-black text-white text-[10px] font-sans font-black uppercase tracking-widest px-3 py-1">
-            ABOUT THE PUBLICATION
+        <div className="max-w-3xl space-y-3 pb-6 border-b border-zinc-200">
+          <span className="bg-zinc-100 text-zinc-700 text-xs font-sans font-bold uppercase tracking-widest px-3 py-1 rounded-full inline-block">
+            COMPANY
           </span>
-          <h1 className="text-4xl sm:text-5xl font-serif font-black text-black leading-tight mt-4">
-            Independent Journalism for a Complex World
+          <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-zinc-900 leading-tight">
+            About Us
           </h1>
-          <p className="text-lg font-sans text-zinc-700 mt-4 leading-relaxed">
-            Founded with a commitment to Nordic editorial principles—transparency, precision, and rigorous independence—The Nordic Chronicle delivers authoritative reporting on international affairs, deep-sea research, market economics, and emerging technologies.
+          <p className="text-base sm:text-lg font-sans text-zinc-600 leading-relaxed font-normal">
+            Founded with a commitment to high editorial principles—transparency, precision, and rigorous independence—Domain Name delivers authoritative reporting on international affairs, deep-sea research, market economics, and emerging technologies.
           </p>
         </div>
 
         {/* Mission Statement Banner */}
-        <div className="bg-black text-white p-8 sm:p-12 mb-16 space-y-4">
-          <span className="text-xs font-sans uppercase tracking-widest text-zinc-400 font-black">
+        <div className="bg-zinc-900 text-white rounded-3xl p-8 sm:p-12 space-y-4 shadow-sm">
+          <span className="text-xs font-sans uppercase tracking-widest text-zinc-400 font-bold">
             OUR CORE CHARTER &amp; MISSION STATEMENT
           </span>
           <blockquote className="text-2xl sm:text-3xl font-serif font-bold leading-snug italic text-white">
@@ -55,10 +64,10 @@ export default function AboutPage() {
         </div>
 
         {/* 4 Core Pillars Grid */}
-        <div className="space-y-6 mb-16">
-          <div className="border-b-2 border-black pb-3">
-            <h2 className="text-2xl font-serif font-black text-black uppercase">
-              THE FOUR PILLARS OF NORDIC EDITORIAL EXCELLENCE
+        <div className="space-y-6">
+          <div className="border-b border-zinc-200 pb-3">
+            <h2 className="text-xl font-serif font-bold text-zinc-900 uppercase">
+              THE FOUR PILLARS OF EDITORIAL EXCELLENCE
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -67,15 +76,15 @@ export default function AboutPage() {
               return (
                 <div
                   key={i}
-                  className="bg-zinc-50 p-8 border-l-4 border-black space-y-4"
+                  className="bg-zinc-50 border border-zinc-200/80 rounded-2xl p-8 space-y-4"
                 >
-                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center">
                     <IconComp className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-black uppercase">
+                  <h3 className="text-xl font-serif font-bold text-zinc-900">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm font-sans text-zinc-700 leading-relaxed">
+                  <p className="text-sm font-sans text-zinc-600 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -85,7 +94,7 @@ export default function AboutPage() {
         </div>
 
         {/* Bureau Stats */}
-        <div className="bg-black text-white p-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="bg-zinc-900 text-white rounded-3xl p-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
             <span className="block text-4xl font-serif font-black text-white">14</span>
             <span className="text-xs font-sans font-bold uppercase tracking-widest text-zinc-400 mt-1 block">Global Bureaus</span>
@@ -103,6 +112,7 @@ export default function AboutPage() {
             <span className="text-xs font-sans font-bold uppercase tracking-widest text-zinc-400 mt-1 block">Independent Trust</span>
           </div>
         </div>
+
       </div>
     </div>
   );
