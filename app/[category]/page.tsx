@@ -49,7 +49,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="w-full bg-white text-black font-sans py-8 space-y-10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-4">
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-widest">
@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left 5 Cols: Title, Description & Featured Image Article */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-1.5">
             <h1 className="text-4xl sm:text-5xl font-serif font-black text-black tracking-tight uppercase leading-none">
               {categoryInfo.label}
             </h1>
@@ -206,15 +206,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </h3>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2">
               {articles.map((art, idx) => (
                 <Link
                   key={art.id}
                   href={`/${art.category}/${art.slug}`}
-                  className="group flex gap-3 items-center pb-4 border-b border-zinc-100 last:border-0 last:pb-0"
+                  className="group flex gap-2.5 items-center pb-2 border-b border-zinc-100 last:border-0 last:pb-0"
                 >
-                  <span className="text-xl font-serif font-black text-black leading-none shrink-0 w-6">
-                    0{idx + 1}
+                  <span className="text-lg font-serif font-black text-black leading-none shrink-0 w-8">
+                    {String(idx + 1).padStart(2, '0')}
                   </span>
                   <div className="flex-1 min-w-0 space-y-0.5">
                     <h4 className="text-xs font-serif font-bold text-black group-hover:underline leading-snug line-clamp-2">
@@ -224,7 +224,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       {(idx + 1) * 2}h ago
                     </span>
                   </div>
-                  <div className="w-16 h-12 overflow-hidden bg-black shrink-0">
+                  <div className="w-14 h-11 overflow-hidden bg-black shrink-0">
                     <img
                       src={art.image}
                       alt={art.title}
